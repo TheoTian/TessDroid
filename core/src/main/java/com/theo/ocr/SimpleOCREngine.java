@@ -62,6 +62,7 @@ public class SimpleOCREngine {
                 if (mTessBaseAPI.init(datapath, language)) {
                     mTessBaseAPI.setPageSegMode(TessBaseAPI.PageSegMode.PSM_AUTO);
                     notifyInited();
+                    return;
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -83,6 +84,7 @@ public class SimpleOCREngine {
                 notifyProcessing();
                 mTessBaseAPI.setImage(bitmap);
                 notifyProcessed();
+                return;
             } catch (Exception e) {
                 e.printStackTrace();
             }

@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -109,7 +110,8 @@ public class SimpleOCRActivity extends AppCompatActivity {
 
             @Override
             public void onProcessed() {
-
+                String result = simpleOCREngine.getResult();
+                Log.i("test",result);
             }
         });
 
@@ -268,17 +270,7 @@ public class SimpleOCRActivity extends AppCompatActivity {
      * train the engine
      */
     private void train() {
-        boolean result = simpleOCREngine.init(new File(trainDataDir).getParentFile().getAbsolutePath(), language);
-
-        String msg;
-        if (result) {
-            msg = "Train Success";
-        } else {
-            msg = "Train Failure";
-        }
-
-        Toast.makeText(SimpleOCRActivity.this, msg, Toast.LENGTH_SHORT).show();
-
+        simpleOCREngine.init(new File(trainDataDir).getParentFile().getAbsolutePath(), language);
     }
 
     private void process() {
@@ -286,13 +278,6 @@ public class SimpleOCRActivity extends AppCompatActivity {
             Toast.makeText(SimpleOCRActivity.this, "Please Train First", Toast.LENGTH_SHORT).show();
             return;
         }
-        simpleOCREngine.process(BitmapFactory.decodeResource(this.getResources(), R.drawable.test_1))
-
-        if () {
-            tvResult.setText(simpleOCREngine.getResult());
-        } else {
-            tvResult.setText("Process Failure");
-        }
-
+        simpleOCREngine.process(BitmapFactory.decodeResource(this.getResources(), R.drawable.test_1));
     }
 }
