@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">TessDroid</string>
+    <string name="text_download_train_Data">1.Select Download Train Data</string>
+    <string name="text_train_ocr_engine">2.Train OCR Engine</string>
+    <string name="text_train">Train</string>
+    <string name="text_ocr_process">3.OCR Process</string>
+    <string name="text_process">Process</string>
+    <string name="text_download">Download</string>
+</resources>
